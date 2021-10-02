@@ -19,7 +19,7 @@ export default class DepthCalculator {
         for (let i = 0; i < arr.length; i++) {
             if (typeof(arr[i]) == "object") {
                 n++;
-                calculateDepth(arr[i])
+                this.calculateDepth(arr[i])
             }
         }
         return n;
