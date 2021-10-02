@@ -17,7 +17,7 @@ const HALF_LIFE_PERIOD = 5730;
  * dateSample('WOOT!') => false
  *
  */
-export default function dateSample( /* sampleActivity */ ) {
+export default function dateSample(sampleActivity) {
     var k = 0.693;
 
     if (
