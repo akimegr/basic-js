@@ -14,17 +14,17 @@ import { NotImplementedError } from '../extensions/index.js';
  * ]) => 3`
  *
  */
-export default function countCats( /* matrix */ ) {
-    function countCats(backyard) {
-        let number = 0;
-        for (let i = 0; i < backyard.length; i++) {
-            for (let z = 0; z < backyard[i].length; z++) {
-                if (backyard[i][z] === "^^") {
-                    number++;
-                }
+export default function countCats(matrix) {
+
+    let number = 0;
+    for (let i = 0; i < matrix.length; i++) {
+        for (let z = 0; z < matrix[i].length; z++) {
+            if (matrix[i][z] === "^^") {
+                number++;
             }
         }
-
-        return number;
     }
+
+    return number;
+
 }
