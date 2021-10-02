@@ -1,25 +1,41 @@
-function getSeason(date) {
-    if (date == undefined) return "Unable to determine the time of year!";
-    let month = date.getMonth();
-    try {
-        if (!date ||
-            !(Object.prototype.toString.call(date) === "[object Date]") ||
-            isNaN(date)
-        )
-            throw new Error("Invalid date!");
-    } catch {
-        throw new Error("Invalid date!");
+function transform(arr) {
+    var arrNew = [];
+    var Next = false;
+    var DoubleNext = false;
+    var disc = false;
+
+    if (!Array.isArray(arr))
+        throw new Error("'arr' parameter must be an instance of the Array!");
+
+    for (var i = 0; i < arr.length; i++)
+        if (arr[i] == "--discard-next") {
+            Next = true;
+        } else if (arr[i] == "--discard-prev") {
+        if (disc) {
+            disc = false;
+            continue;
+        }
+        if (arrNew.length > 0) arrNew.pop();
+    } else if (arr[i] == "--double-next") {
+        DoubleNext = true;
+    } else if (arr[i] == "--double-prev") {
+        if (disc) {
+            disc = false;
+            continue;
+        }
+        if (arrNew.length > 0) arrNew.push(arrNew[arrNew.length - 1]);
+    } else {
+        if (Next) {
+            Next = false;
+            disc = true;
+            continue;
+        }
+        if (DoubleNext) {
+            DoubleNext = false;
+            arrNew.push(arr[i], arr[i]);
+        } else arrNew.push(arr[i]);
+        disc = false;
     }
 
-    if (month == 1 - 1 || month == 2 - 1 || month == 12 - 1)
-        return "winter";
-    else if (month == 3 - 1 || month == 4 - 1 || month == 5 - 1)
-        return "spring";
-    else if (month == 9 - 1 || month == 10 - 1 || month == 11 - 1)
-        return "summer";
-    else
-        return "autumn"
+    return arrNew;
 }
-const springDate = new Date(2020, 02, 31)
-
-alert(getSeason(springDate))

@@ -21,7 +21,7 @@ export default function createDreamTeam(members) {
             arr += members[i][0];
         }
     }
-    arr = arr.split("").sort().join("")
+    arr = arr.split("").sort().join("");
 
 
 }
