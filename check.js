@@ -1,13 +1,14 @@
-function addLink(value) {
-    let n;
-    if (arguments.len == 0) n = "( )";
-    else if (value === undefined) n = "( undefined )";
-    else if (value === null) n = "( null )";
-    else if (Number.isNaN(value)) n = "( NaN )";
-    else n = "( " + value + " )";
-    if (this.len == 0) this.ch += n;
-    else this.ch += "~~" + n;
-    this.len++;
-    return this;
+let n = 1;
 
+function calculateDepth(arr) {
+
+    for (let i = 0; i < arr.length; i++) {
+        if (typeof(arr[i]) == "object") {
+            n++;
+            calculateDepth(arr[i])
+        }
+    }
+    return n;
 }
+
+calculateDepth([1, [2, [3]]])
