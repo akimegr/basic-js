@@ -12,16 +12,15 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  */
 export default function deleteDigit(n) {
-    let num = [];
-    let str = String(n);
-
-    for (let i = 0; i < str.length; i++) {
-        let nowS = str.slice(0, i) + str.slice(i + 1);
-        num.push(Number(nowS));
+    let arr = n.toString().split('');
+    let max = 0;
+    for (let i = 0; i < arr.length; i++) {
+        let f = arr.slice();
+        f.splice(i, 1);
+        f = f.join('');
+        if (Number(f) > max) {
+            max = Number(f);
+        }
     }
-
-    num.sort((a, b) => {
-        return b - a;
-    });
-    return num[0];
+    return max;
 }
