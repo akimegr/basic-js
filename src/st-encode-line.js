@@ -13,9 +13,9 @@ import { NotImplementedError } from '../extensions/index.js';
 export default function encodeLine(str) {
     var all = [];
     var res = [];
-    var len = names.length;
 
-    for (var i = 0; i < len; i++) {
+
+    for (var i = 0; i < str.length; i++) {
         var now = names.shift();
         if (
             all.indexOf(now) == -1 &&
