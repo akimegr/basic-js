@@ -23,7 +23,7 @@ import { NotImplementedError } from '../extensions/index.js';
  *  [1, 1, 1]
  * ]
  */
-export default function minesweeper( /* matrix */ ) {
+export default function minesweeper(matrix) {
     let ans = JSON.parse(JSON.stringify(matrix));
 
     for (let i = 0; i < matrix.length; i++) {
