@@ -11,24 +11,30 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  */
 export default function encodeLine(str) {
-    var ans = "";
-    var on = "";
-    var onCount = 0;
+    var all = [];
+    var res = [];
+    var len = names.length;
 
-    for (var i = 0; i < str.length; i++) {
-        if (on == str[i]) onCount++;
-        else if (on == "") {
-            on = str[i];
-            onCount++;
+    for (var i = 0; i < len; i++) {
+        var now = names.shift();
+        if (
+            all.indexOf(now) == -1 &&
+            res.indexOf(now) == -1
+        ) {
+            all.push(now);
+            res.push(now);
+        } else if (all.indexOf(now) != -1) {
+            all.push(now);
+            var count = 0;
+            all.forEach((item) => {
+                if (item == now) count++;
+            });
+            res.push(now + "(" + (count - 1) + ")");
         } else {
-            if (onCount > 1) ans += onCount + on;
-            else ans += on;
-            on = str[i];
-            onCount = 1;
+            all.push(now);
+            res.push(now + "(1)");
         }
     }
-    if (onCount > 1) ans += onCount + on;
-    else ans += on;
 
-    return ans;
+    return res;
 }
