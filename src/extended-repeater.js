@@ -39,19 +39,19 @@ export default function repeater(str, options) {
             if (options.additionSep != undefined)
                 additionSep = options.additionSep;
             for (var i = 0; i < options.additionRepeatTimes; i++) arr.push(addition);
-            add = arr.join(additionSep;
-            }
+            add = arr.join(additionSep);
         }
-
-        if (options.sep !== undefined) sep = options.sep;
-        For = add + sep;
-
-        var resArr = [];
-        if (str === null) strN = "null";
-        else strN = str;
-        if (options.repeatTimes === undefined) resArr.push(strN);
-        else {
-            for (var i = 0; i < options.repeatTimes; i++) resArr.push(strN);
-        }
-        return resArr.join(For) + add;
     }
+
+    if (options.sep !== undefined) sep = options.sep;
+    For = add + sep;
+
+    var resArr = [];
+    if (str === null) strN = "null";
+    else strN = str;
+    if (options.repeatTimes === undefined) resArr.push(strN);
+    else {
+        for (var i = 0; i < options.repeatTimes; i++) resArr.push(strN);
+    }
+    return resArr.join(For) + add;
+}
