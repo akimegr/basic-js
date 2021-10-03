@@ -11,9 +11,9 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  */
 export default function encodeLine(str) {
-    var ans = "";
-    var on = "";
-    var onCount = 0;
+    let ans = "";
+    let on = "";
+    let onCount = 0;
 
     for (var i = 0; i < str.length; i++) {
         if (on == str[i]) onCount++;
